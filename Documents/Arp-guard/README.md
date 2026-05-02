@@ -31,8 +31,13 @@ arp-guard/
 │   │   ├── requirements.txt   # Python dependencies
 │   │   └── .env              # Environment variables (not in git)
 │   └── frontend/
-│       ├── index.html        # Main application (CDN-based)
-│       └── serve.py          # Simple HTTP server
+│       ├── src/
+│       │   ├── pages/         # React page components
+│       │   ├── App.js         # Root component
+│       │   └── index.jsx      # Entry point
+│       ├── index.html         # HTML entry
+│       ├── package.json       # Node dependencies
+│       └── tailwind.config.js # Tailwind configuration
 ├── .env.example              # Environment template
 ├── .gitignore               # Git ignore rules
 ├── LICENSE                  # MIT License
@@ -54,10 +59,11 @@ arp-guard/
 - **Bcrypt**: Password hashing
 
 ### Frontend
-- **React**: UI library (CDN-based, no build required)
-- **Chart.js**: Data visualization
+- **React**: UI library (Parcel bundler)
 - **Tailwind CSS**: Styling
 - **Axios**: HTTP client
+- **React Router**: Client-side routing
+- **Lucide React**: Icons
 
 ---
 
@@ -78,10 +84,15 @@ git clone https://github.com/yourusername/arp-guard.git
 cd arp-guard
 ```
 
-### 2. Install Backend Dependencies
+### 2. Install Dependencies
 ```bash
+# Backend
 cd app/backend
 pip install -r requirements.txt
+
+# Frontend
+cd ../frontend
+npm install
 ```
 
 ### 3. Configure Environment Variables
@@ -132,7 +143,8 @@ python -m uvicorn server:app --reload --host 0.0.0.0 --port 8000
 #### Start Frontend Server
 ```bash
 cd app/frontend
-python serve.py
+npm install
+npm start
 ```
 
 ### Access the Application
